@@ -1,5 +1,7 @@
 # NativeアプリからSoerceryへログイン&FCMデバイス登録トークンを登録させる
 
+https://uid-input-test.herokuapp.com/ 
+
 Things you may want to cover:
 
 * Ruby version
