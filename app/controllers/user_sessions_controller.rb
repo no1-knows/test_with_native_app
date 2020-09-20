@@ -6,8 +6,9 @@ class UserSessionsController < ApplicationController
 
   def create
     @user = login(params[:email], params[:password])
-
     if @user
+      token = params[:device_token]
+      @user.update(device_token: token) if token.present? && token != @user.device_token
       redirect_back_or_to(:users, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
