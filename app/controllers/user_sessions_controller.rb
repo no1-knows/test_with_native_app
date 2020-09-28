@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user = login(params[:email], params[:password])
+    @user = login(params[:email], params[:password], params[:remember])
     if @user
       token = params[:device_token]
       @user.update(device_token: token) if token.present? && token != @user.device_token
