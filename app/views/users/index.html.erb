@@ -16,7 +16,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.device_token %></td>
+	      <td><%= user.device_token %></td>
+
 	      <td><%= user.updated_at.strftime('%H:%M:%S') %></td>
 	      <td><%= user.created_at.strftime('%H:%M:%S') %></td>
       </tr>

@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TestWithNativeApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-	  <meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+	<title>TestWithNativeApp</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-	  <body>
-	  <div class="condition<%= current_user ? " login" : ""%>">
-		  <%= current_user ? "ログイン中" : "未ログイン"%>
-	  </div>
+<body>
+<div class="condition<%= current_user ? " login" : "" %>">
+	<%= current_user ? "#{current_user.email}ログイン中" : "未ログイン" %>
+</div>
 
-	  <div id="nav">
-		  <% if current_user %>
-			  <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-			  <%= link_to "Logout", :logout, method: :post %>
-		  <% else %>
-			  <%= link_to "Register", new_user_path %> |
-			  <%= link_to "Login", :login %>
-		  <% end %>
-	  </div>
-	  <div>
-		  <p id="notice"><%= flash[:notice] %></p>
-		  <p id="alert"><%= flash[:alert] %></p>
-	  </div>
+<div id="nav">
+	<% if current_user %>
+		<p>
+			<%= link_to "HOME", root_path %>
+			<%= link_to "Edit Mail/PW", edit_user_path(current_user.id) %>
+			<%= link_to "Logout", :logout, method: :post %> </p>
 
-	  <%= yield %>
+		<% if current_user.user_detail.present? %>
+			<%= link_to "Edit NAME", edit_user_detail_path(current_user.id) %>
+			<%= link_to "Check NAME", user_detail_path(current_user.id) %>
+		<% else %>
+			<%= link_to "New NAME", new_user_detail_path %>
+		<% end %>
+	<% else %>
+		<%= link_to "Register", new_user_path %>
+		<%= link_to "Login", :login %>
+	<% end %>
+</div>
+<div>
+	<p id="notice"><%= flash[:notice] %></p>
+	<p id="alert"><%= flash[:alert] %></p>
+</div>
 
-  </body>
+<%= yield %>
+
+</body>
 </html>
