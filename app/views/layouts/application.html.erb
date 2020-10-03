@@ -29,6 +29,7 @@
 			<%= link_to "New NAME", new_user_detail_path %>
 		<% end %>
 	<% else %>
+		<%= link_to "HOME", root_path %>
 		<%= link_to "Register", new_user_path %>
 		<%= link_to "Login", :login %>
 	<% end %>
