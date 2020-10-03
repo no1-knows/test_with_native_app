@@ -1,0 +1,28 @@
+<%= form_with(model: user_detail, url: user_detail_path, local: true) do |form| %>
+	<% if user_detail.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(user_detail.errors.count, "error") %> prohibited this user_detail from being saved:</h2>
+
+			<ul>
+				<% user_detail.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+
+	<%= form.label :name %>
+	<div class="field">
+		<%= form.text_field :last_name, placeholder: '例）松本' %>
+	</div>
+	<div class="field">
+		<%= form.text_field :first_name, placeholder: '例）人志' %>
+	</div>
+
+
+
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>
