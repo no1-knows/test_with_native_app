@@ -63,6 +63,6 @@ class UserDetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_detail_params
-      params.require(:user_detail).permit(:first_name, :last_name).merge(user_id: current_user.id)
+      params.require(:user_detail).permit(:first_name, :last_name).merge(user_id: 1)
     end
 end
