@@ -21,14 +21,13 @@
 			<%= link_to "HOME", root_path %>
 			<%= link_to "Edit Mail/PW", edit_user_path(current_user.id) %>
 			<%= link_to "Logout", :logout, method: :post %> </p>
-		<p>
-			<%= link_to "New NAME", new_user_detail_path %>
+
+		<% if current_user.user_detail.present? %>
 			<%= link_to "Edit NAME", edit_user_detail_path(current_user.id) %>
 			<%= link_to "Check NAME", user_detail_path(current_user.id) %>
-		</p>
-
-
-
+		<% else %>
+			<%= link_to "New NAME", new_user_detail_path %>
+		<% end %>
 	<% else %>
 		<%= link_to "HOME", root_path %>
 		<%= link_to "Register", new_user_path %>
