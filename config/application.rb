@@ -31,5 +31,6 @@ module TestWithNativeApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.appID = '62PA4Z38SF.jp.baits' # {TeamID}.{BundleID}
   end
 end
